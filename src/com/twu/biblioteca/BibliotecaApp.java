@@ -8,22 +8,16 @@ import java.util.Arrays;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
         MainMenu menu = new MainMenu();
 
-        welcomeMessage();
-
-        menu.chooseOption();
-        System.out.println("Select an option: ");
-        int n = reader.nextInt();
+        System.out.println(welcomeMessage());
+        int n = menu.chooseOption();
         menu.optionChosen(n);
-        reader.close();
-
 
     }
 
-    public static void welcomeMessage() {
-        System.out.println("Dear client, Welcome to the library application.\n");
+    public static String welcomeMessage() {
+        return "Dear client, Welcome to the library application.\n";
     }
 
 }

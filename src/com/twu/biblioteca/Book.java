@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Objects;
+
 public class Book {
     private String title;
     private String author;
@@ -22,4 +24,12 @@ public class Book {
     public Integer getYear() {
         return year;
     }
+
+
+    public boolean equals(Book o) {
+        if (this.title == o.title && this.author == o.author && this.year == o.year)
+            return true;
+        return false;
+    }
+
 }
