@@ -9,10 +9,15 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         MainMenu menu = new MainMenu();
-
         System.out.println(welcomeMessage());
-        int n = menu.chooseOption();
-        menu.optionChosen(n);
+        menu.optionsAvailable();
+        int option = menu.checkInput();
+        menu.optionChosen(option);
+        while (option != 0) {
+            menu.optionsAvailable();
+            option = menu.checkInput();
+            menu.optionChosen(option);
+        }
 
     }
 

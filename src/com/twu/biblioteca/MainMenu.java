@@ -2,27 +2,48 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainMenu {
-    Scanner reader = new Scanner(System.in);
-    private String[] options = new String[]{"List Books"};
 
-    public Integer chooseOption() {
-        System.out.println("Please, choose an option: ");
-        System.out.println("[1]  " + options[0] + "\n");
-        System.out.println("Select an option: ");
-        int n = reader.nextInt();
-        reader.close();
-        return n;
+    private HashMap<Integer, String> options = new HashMap<Integer, String>();
+
+    public void setOptions() {
+        this.options.put(1, "List Books");
+        this.options.put(0, "Quit");
     }
 
-    public void optionChosen(Integer n) {
-        if (n == 1)
+    public void optionsAvailable() {
+        System.out.println("\nPlease, choose an option: ");
+        setOptions();
+        System.out.println("[1]  " + options.get(1));
+        System.out.println("[0]  " + options.get(0));
+
+    }
+
+    public Integer checkInput() {
+        Scanner reader = new Scanner(System.in);
+        Boolean validInput = false;
+        int attempts = 0;
+        while (attempts<15) {
+            String input = reader.next();
+            if (input.matches("-?\\d+") && options.containsKey(Integer.parseInt(input))) {
+                validInput = true;
+                return Integer.parseInt(input);
+            } else
+                System.out.println("Select a valid option!");
+            attempts += 1;
+        }
+        return 0;
+    }
+
+    public void optionChosen (Integer opt){
+        if (opt == 1)
             listOfBooks();
     }
 
-    public static ArrayList<Book> listOfBooks() {
+    public static ArrayList<Book> listOfBooks () {
         ArrayList<Book> books = new ArrayList();
         System.out.println("These are the books available: \n");
         System.out.printf("%-20s %-20s %-20s\n", "Title", "Author", "Year");
@@ -30,9 +51,8 @@ public class MainMenu {
         books.add(1, new Book("Lord Of The Rings", "J. R. R. Tolkien", 1954));
 
 
-        for (Book book : books) {
+        for (Book book : books)
             System.out.printf("%-20s %-20s %-20s\n", book.getTitle(), book.getAuthor(), book.getYear());
-        }
         return books;
     }
 }
