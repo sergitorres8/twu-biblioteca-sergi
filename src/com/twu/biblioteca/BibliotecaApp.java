@@ -10,6 +10,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         MainMenu menu = new MainMenu();
         System.out.println(welcomeMessage());
+        menu.createBookList();
         menu.optionsAvailable();
         int option = menu.checkInput();
         menu.optionChosen(option);
