@@ -19,6 +19,7 @@ public class MainMenu {
         this.options.put(1, "List Books");
         this.options.put(0, "Quit");
         this.options.put(2, "Checkout Book");
+        this.options.put(3, "Return Book");
     }
 
     public void optionsAvailable() {
@@ -26,7 +27,9 @@ public class MainMenu {
         setOptions();
         System.out.println("[1]  " + options.get(1));
         System.out.println("[2]  " + options.get(2));
+        System.out.println("[3]  " + options.get(3));
         System.out.println("[0]  " + options.get(0));
+
 
     }
 
@@ -49,18 +52,44 @@ public class MainMenu {
             listOfBooks();
         else if (opt == 2)
             checkOutBook();
+        else if (opt == 3)
+            returnBook();
+    }
+
+    private void returnBook() {
+        System.out.println("\nWhich book would you like to return (Type Title):  ");
+        Scanner reader = new Scanner(System.in);
+        String returned_book = reader.nextLine();
+        Boolean returnedapproval = false;
+
+        for (Book book : books){
+            if (book.getTitle().equals(returned_book)) {
+                book.setAvailable(true);
+                returnedapproval = true;
+            }
+        }
+        if (returnedapproval)
+            System.out.println("\nThank you for returning the book.");
+        else
+            System.out.println("\nThat book doesn't exist.");
     }
 
     private void checkOutBook() {
         System.out.println("\nWhich book would you like to checkout (Choose by Title):  ");
         Scanner reader = new Scanner(System.in);
         String checked_out_book = reader.nextLine();
+        Boolean bookAvailable = false;
 
         for (Book book : books){
-            if (book.getTitle().equals(checked_out_book)){
+            if (book.getTitle().equals(checked_out_book)) {
                 book.setAvailable(false);
+                bookAvailable = true;
             }
         }
+        if (bookAvailable)
+            System.out.println("\nThank you! Enjoy the book.");
+        else
+            System.out.println("\nThat book is not available.");
     }
 
     public void listOfBooks () {
