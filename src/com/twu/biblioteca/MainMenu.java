@@ -29,8 +29,6 @@ public class MainMenu {
         System.out.println("[2]  " + options.get(2));
         System.out.println("[3]  " + options.get(3));
         System.out.println("[0]  " + options.get(0));
-
-
     }
 
     public Integer checkInput() {

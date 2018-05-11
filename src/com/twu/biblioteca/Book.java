@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Objects;
+
 public class Book {
     private String title;
     private String author;
@@ -33,10 +35,20 @@ public class Book {
         this.available = available;
     }
 
-    public boolean equals(Book o) {
-        if (this.title == o.title && this.author == o.author && this.year == o.year)
-            return true;
-        return false;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(year, book.year) &&
+                Objects.equals(available, book.available);
     }
 
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(title, author, year, available);
+    }
 }
