@@ -1,30 +1,17 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        MainMenu menu = new MainMenu();
-        System.out.println(welcomeMessage());
-        menu.createBookList();
-        menu.optionsAvailable();
-        int option = menu.checkInput();
-        menu.optionChosen(option);
-        while (option != 0) {
-            menu.optionsAvailable();
-            option = menu.checkInput();
-            menu.optionChosen(option);
+        Printer output = new Printer();
+        Library library = new Library();
+        Navigator nav = new Navigator(library);
+        output.welcomeMessage();
+        int action = nav.selectAnActionFromMenu();
+
+        while (action != 0){
+            nav.menu(action);
+            action = nav.selectAnActionFromMenu();
         }
-
     }
-
-    public static String welcomeMessage() {
-        return "Dear client, Welcome to the library application.\n";
-    }
-
 }
-

@@ -7,7 +7,8 @@ import java.util.*;
 
 public class LibraryTest {
     private Library library;
-    private Optional<Book> checkedoutBook;
+    private Optional<Book> checkedOutBook;
+    private Optional<Book> returnedBook;
     @Test
     public void shouldCheckoutBookFromLibrary(){
         givenThereIsOneBookInTheLibrary();
@@ -30,18 +31,50 @@ public class LibraryTest {
         thenNoBookIsReturned();
     }
 
+    @Test
+    public void shouldReturnBookToLibrary() {
+        givenThereIsNoBooks();
+        whenWeReturnABook();
+        thenWeShouldHaveThatBookInTheList();
+    }
+
+    @Test
+    public void shouldReturnBookJustWhenTheBookExists() {
+        givenThereIsOneBookInTheLibrary();
+        whenWeReturnABookThatDoesntExists();
+        thenTheBookIsNotReturnedToTheLibrary();
+    }
+
+
+
+    private void thenTheBookIsNotReturnedToTheLibrary() {
+        Assert.assertEquals(Optional.empty(), returnedBook);
+    }
+
+    private void whenWeReturnABookThatDoesntExists() {
+        returnedBook = library.returnBook(new Book("Harry Peter", "J. K. Rowling", 1997, true));
+    }
+
+    private void thenWeShouldHaveThatBookInTheList() {
+        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997, true), library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997, true)).get());
+    }
+
+    private void whenWeReturnABook() {
+        library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997, true));
+    }
+
     private void givenThereIsNoBooks() {
-        List<Book> listofbooks = new ArrayList<>();
-        library = new Library(listofbooks);
+        List<Book> listOfBooks = new ArrayList<>();
+        library = new Library(listOfBooks);
     }
 
     private void andTheBookIsReturnedFromTheCheckout() {
-        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997, true), checkedoutBook.get());
+        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997, true), checkedOutBook.get());
     }
 
 
     private void thenNoBookIsReturned() {
-        Assert.assertEquals(Optional.empty(), checkedoutBook);
+        Assert.assertEquals(Optional.empty(), checkedOutBook);
     }
 
     private void thenTheLibraryIsEmpty() {
@@ -49,7 +82,7 @@ public class LibraryTest {
     }
 
     private void whenWeChechoutABook(Book book) {
-        checkedoutBook = library.checkout(book);
+        checkedOutBook = library.checkout(book);
     }
 
     private void givenThereIsOneBookInTheLibrary() {

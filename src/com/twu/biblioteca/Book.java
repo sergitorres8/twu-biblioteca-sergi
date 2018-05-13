@@ -23,9 +23,7 @@ public class Book {
         return author;
     }
 
-    public Integer getYear() {
-        return year;
-    }
+    public Integer getYear() { return year; }
 
     public Boolean getAvailable() {
         return available;
