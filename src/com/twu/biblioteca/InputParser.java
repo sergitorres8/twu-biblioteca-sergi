@@ -21,4 +21,18 @@ public class InputParser {
         String input = scanner.nextLine();
         return input;
     }
+
+    public String askForLoginNumber() {
+        scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        if(input.matches("\\d{3}-\\d{4}"))
+            return input;
+        return null;
+    }
+
+    public String askForForPassword() {
+        scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        return input;
+    }
 }

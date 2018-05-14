@@ -8,6 +8,7 @@ public class Navigator {
     InputParser inputParser;
     Library library;
     Printer  printer;
+    User user;
 
     public Navigator(Library library) {
         this.inputParser = new InputParser();
@@ -56,6 +57,9 @@ public class Navigator {
                     library.returnBook(movieToReturn);
                     printer.movieReturned();
                 }
+                break;
+            case 7:
+                printer.displayUserInformation(user.getUserName(), user.getEmail(), user.getPhoneNumber());
                 break;
         }
     }
@@ -112,7 +116,7 @@ public class Navigator {
         try {
             printer.whatActionWouldYouLikeToDo();
             int choice = inputParser.askForNumber();
-            if(choice < 0 || choice > 6)
+            if(choice < 0 || choice > 7)
                 throw new InputMismatchException("\nThis option is not available.");
             return choice;
         } catch (InputMismatchException e){
@@ -122,4 +126,17 @@ public class Navigator {
         return 0;
     }
 
+    public boolean loginUser() {
+        printer.loginAsUser();
+        String loginNumber, passWord;
+        loginNumber = inputParser.askForLoginNumber();
+        printer.loginAsUserPassword();
+        passWord = inputParser.askForForPassword();
+        if (library.loginUser(loginNumber, passWord).isPresent()) {
+            user = library.loginUser(loginNumber, passWord).get();
+            return true;
+        }
+        else
+            return false;
+    }
 }

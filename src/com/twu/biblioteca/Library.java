@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class Library {
@@ -9,6 +10,7 @@ public class Library {
     private List<Book> catalogOfBooks;
     private List<Movie> movies;
     private List<Movie> catalogOfMovies;
+    private List<User> users;
 
     public Library(List<Book> books) {
         this.books = books;
@@ -20,11 +22,16 @@ public class Library {
         catalogOfBooks.add(new Book("Lord Of The Rings", "J. R. R. Tolkien", 1954));
         this.books = new ArrayList<>();
         this.books = copyList(catalogOfBooks, books);
+
         this.catalogOfMovies = new ArrayList<>();
         catalogOfMovies.add(new Movie("Interstellar", 2014, "Christopher Nolan", 8.9f));
         catalogOfMovies.add(new Movie("The Hobbit", 2012, "Peter Jackson", 8.6f));
         this.movies = new ArrayList<>();
         this.movies = copyList(catalogOfMovies, movies);
+
+        this.users = new ArrayList<>();
+        users.add(new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509"));
+        users.add(new User("000-0002","0002","Tony Stark", "tstark@thoughtworks.com", "88888888"));
     }
 
     public Optional<LibraryItem> checkout(LibraryItem libraryItem) {
@@ -56,6 +63,14 @@ public class Library {
                 movies.add(movie);
                 return Optional.of(movie);
             }
+        }
+        return Optional.empty();
+    }
+
+    public Optional<User> loginUser(String loginNumber, String passWord){
+        for (User user: users){
+            if(user.login(loginNumber, passWord))
+                return Optional.of(user);
         }
         return Optional.empty();
     }

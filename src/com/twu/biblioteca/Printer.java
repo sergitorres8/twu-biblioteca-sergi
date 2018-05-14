@@ -44,6 +44,7 @@ public class Printer {
                 "[4]     List All Movies Available\n" +
                 "[5]     Check Out movie\n" +
                 "[6]     Return movie\n" +
+                "[7]     View User Information\n" +
                 "[0]     Quit"+ RESET);
 
     }
@@ -78,9 +79,9 @@ public class Printer {
 
     public void listAvailableMovies(List<Movie> movies) {
         out.println("\nThese are the available movies:\n");
-        out.printf("%-20s %-20s %-20s %-10s\n", "Title", "Director", "Year", "Rating");
+        out.printf("%-20s %-20s %-10s %-10s\n", "Title", "Director", "Year", "Rating");
         for (Movie movie : movies)
-            out.printf(BLUE + "%-20s %-20s %-20s %-10s\n" + RESET, movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating());
+            out.printf(BLUE + "%-20s %-20s %-10s %-10s\n" + RESET, movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating());
     }
 
     public void movieUnavailable() {
@@ -97,5 +98,18 @@ public class Printer {
 
     public void movieReturned() {
         out.printf("\nThank you for returning the movie.\n");
+    }
+
+    public void loginAsUser() {
+        out.printf("\nPlease type your login number(xxx-xxxx):\n");
+    }
+    public void loginAsUserPassword() {
+        out.printf("\nPlease type your password:\n");
+    }
+
+    public void displayUserInformation(String userName, String email, String phoneNumber) {
+        out.println("\nThese are the available movies:\n");
+        out.printf("%-20s %-30s %-20s\n", "User Name", "Email", "Phone Number");
+        out.printf(BLUE + "%-20s %-30s %-20s\n" + RESET, userName, email, phoneNumber);
     }
 }

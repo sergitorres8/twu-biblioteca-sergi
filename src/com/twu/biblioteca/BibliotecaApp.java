@@ -7,11 +7,15 @@ public class BibliotecaApp {
         Library library = new Library();
         Navigator nav = new Navigator(library);
         output.welcomeMessage();
-        int action = nav.selectAnActionFromMenu();
 
-        while (action != 0){
-            nav.menu(action);
-            action = nav.selectAnActionFromMenu();
+        if(nav.loginUser()) {
+            int action = nav.selectAnActionFromMenu();
+            while (action != 0) {
+                nav.menu(action);
+                action = nav.selectAnActionFromMenu();
+            }
         }
+        else
+            System.exit(0);
     }
 }
