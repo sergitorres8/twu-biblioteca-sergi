@@ -29,7 +29,7 @@ public class Printer {
     }
 
     public void listAvailableBooks(List<Book> books) {
-        out.println("These are the available books:\n");
+        out.println("\nThese are the available books:\n");
         out.printf("%-20s %-20s %-20s\n", "Title", "Author", "Year");
         for (Book book : books)
             out.printf(BLUE + "%-20s %-20s %-20s\n" + RESET, book.getTitle(), book.getAuthor(), book.getYear());
@@ -41,6 +41,9 @@ public class Printer {
         out.println(CYAN + "\n[1]     List All Books Available\n" +
                 "[2]     Check out book\n" +
                 "[3]     Return book\n" +
+                "[4]     List All Movies Available\n" +
+                "[5]     Check Out movie\n" +
+                "[6]     Return movie\n" +
                 "[0]     Quit"+ RESET);
 
     }
@@ -67,5 +70,32 @@ public class Printer {
 
     public void wrongInputMenu() {
         out.printf(RED + "\nSelect a valid option!\n"+ RESET);
+    }
+
+    public void thereArentAvailableMovies() {
+        out.printf("\nThere aren't any available movies.\n");
+    }
+
+    public void listAvailableMovies(List<Movie> movies) {
+        out.println("\nThese are the available movies:\n");
+        out.printf("%-20s %-20s %-20s %-10s\n", "Title", "Director", "Year", "Rating");
+        for (Movie movie : movies)
+            out.printf(BLUE + "%-20s %-20s %-20s %-10s\n" + RESET, movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating());
+    }
+
+    public void movieUnavailable() {
+            out.printf(RED + "\nThis movie is unavailable.\n" + RESET);
+    }
+
+    public void MovieCheckedOut()  {
+        out.printf("\nThank you! Enjoy the movie!\n");
+    }
+
+    public void typetitleOfMovie() {
+        out.printf("\nPlease type the title of the movie.\n");
+    }
+
+    public void movieReturned() {
+        out.printf("\nThank you for returning the movie.\n");
     }
 }

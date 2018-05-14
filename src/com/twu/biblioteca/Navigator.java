@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
 
-import org.junit.Test;
-
 import java.util.InputMismatchException;
 import java.util.Optional;
 
@@ -39,14 +37,45 @@ public class Navigator {
                     printer.bookReturned();
                 }
                 break;
+            case 4:
+                if (library.getMovies().size() == 0)
+                    printer.thereArentAvailableMovies();
+                else
+                    printer.listAvailableMovies(library.getMovies());
+                break;
+            case 5:
+                Movie movieToCheckOut = selectAMovieToCheckOut();
+                if (movieToCheckOut != null) {
+                    library.checkout(movieToCheckOut);
+                    printer.MovieCheckedOut();
+                }
+                break;
+            case 6:
+                Movie movieToReturn = selectAMovieToReturn();
+                if (movieToReturn != null) {
+                    library.returnBook(movieToReturn);
+                    printer.movieReturned();
+                }
+                break;
+        }
+    }
+
+    private Movie selectAMovieToReturn() {
+        printer.typetitleOfMovie();
+        String inputTitle = inputParser.askForForTitle();
+        Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
+        if (optionalMovie.isPresent())
+            return optionalMovie.get();
+        else {
+            printer.movieUnavailable();
+            return null;
         }
     }
 
     private Book selectABookToReturn() {
         printer.typetitleOfBook();
-        String inputTitle = inputParser.askForBookTitle();
+        String inputTitle = inputParser.askForForTitle();
         Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
-        System.out.printf(optionalBook.toString());
         if (optionalBook.isPresent())
             return optionalBook.get();
         else {
@@ -57,7 +86,7 @@ public class Navigator {
 
     private Book selectABookToCheckOut() {
         printer.typetitleOfBook();
-        String inputTitle = inputParser.askForBookTitle();
+        String inputTitle = inputParser.askForForTitle();
         Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
         if (optionalBook.isPresent() && library.getBooks().contains(optionalBook.get()))
             return optionalBook.get();
@@ -67,11 +96,23 @@ public class Navigator {
         }
     }
 
+    private Movie selectAMovieToCheckOut() {
+        printer.typetitleOfMovie();
+        String inputTitle = inputParser.askForForTitle();
+        Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
+        if (optionalMovie.isPresent() && library.getMovies().contains(optionalMovie.get()))
+            return optionalMovie.get();
+        else {
+            printer.movieUnavailable();
+            return null;
+        }
+    }
+
     public int selectAnActionFromMenu() {
         try {
             printer.whatActionWouldYouLikeToDo();
             int choice = inputParser.askForNumber();
-            if(choice < 0 || choice > 3)
+            if(choice < 0 || choice > 6)
                 throw new InputMismatchException("\nThis option is not available.");
             return choice;
         } catch (InputMismatchException e){
