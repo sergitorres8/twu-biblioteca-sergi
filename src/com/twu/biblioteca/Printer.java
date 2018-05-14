@@ -112,4 +112,8 @@ public class Printer {
         out.printf("%-20s %-30s %-20s\n", "User Name", "Email", "Phone Number");
         out.printf(BLUE + "%-20s %-30s %-20s\n" + RESET, userName, email, phoneNumber);
     }
+
+    public void invalidUserOrPassword() {
+        out.printf(RED + "\nThe user login number or password is wrong!\n"+ RESET);
+    }
 }

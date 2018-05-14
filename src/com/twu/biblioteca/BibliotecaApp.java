@@ -15,7 +15,9 @@ public class BibliotecaApp {
                 action = nav.selectAnActionFromMenu();
             }
         }
-        else
+        else {
+            output.invalidUserOrPassword();
             System.exit(0);
+        }
     }
 }
