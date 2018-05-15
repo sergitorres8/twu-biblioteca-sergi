@@ -20,15 +20,20 @@ public class LibraryTest {
     @Test
     public void shouldReturnEmptyOptionalIfBookUnavailable(){
         givenThereIsOneBookInTheLibrary();
-        whenWeCheckOutABook(new Book("Harry Doesn't Exist", "J. K. Rowling", 1997));
-        thenNoBookIsReturned();
+        checkedOutBook = whenWeCheckOutABookThatDoesntExist(new Book("Harry Doesn't Exist", "dfd", 1947));
+        thenNoBookIsReturned(checkedOutBook);
+    }
+
+    private Optional<LibraryItem> whenWeCheckOutABookThatDoesntExist(LibraryItem libraryItem) {
+        checkedOutBook = library.checkout(libraryItem);
+        return checkedOutBook;
     }
 
     @Test
     public void shouldReturnEmptyOptionalWhenListOfBooksIsEmpty() {
         givenThereIsNoBooks();
-        whenWeCheckOutABook(new Book("Harry Peter", "J. K. Rowling", 1997));
-        thenNoBookIsReturned();
+        checkedOutBook = whenWeCheckOutABook(new Book("Harry Peter", "J. K. Rowling", 1997));
+        thenNoBookIsReturned(checkedOutBook);
     }
 
     @Test
@@ -56,8 +61,7 @@ public class LibraryTest {
     }
 
     private void thenWeShouldHaveThatBookInTheList() {
-        Book book = (Book) checkedOutBook.get();
-        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997), book);
+        Assert.assertEquals(Optional.empty(), returnedBook);
     }
 
     private void whenWeReturnABook() {
@@ -75,7 +79,7 @@ public class LibraryTest {
     }
 
 
-    private void thenNoBookIsReturned() {
+    private void thenNoBookIsReturned(Optional<LibraryItem> checkedOutBook) {
         Assert.assertEquals(Optional.empty(), checkedOutBook);
     }
 
@@ -83,8 +87,9 @@ public class LibraryTest {
         Assert.assertEquals(0, library.getBooks().size());
     }
 
-    private void whenWeCheckOutABook(LibraryItem item) {
+    private Optional<LibraryItem> whenWeCheckOutABook(LibraryItem item) {
         checkedOutBook = library.checkout(item);
+        return checkedOutBook;
     }
 
     private void givenThereIsOneBookInTheLibrary() {
