@@ -1,21 +1,22 @@
 package com.twu.biblioteca;
 
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import java.awt.*;
+import org.mockito.Mockito;
+import org.mockito.internal.configuration.injection.scanner.MockScanner;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.Optional;
+
 
 public class NavigatorTest {
     Navigator nav;
     Library lib;
-    Book book;
     LibraryItem libraryItem;
-    InputParser inputParser;
+    Book book;
+
+
     @Test
     public void listBookWhenInputIs1() {
         givenThereIsOneBookInTheLibrary();
@@ -24,30 +25,17 @@ public class NavigatorTest {
     }
 
     @Test
-    public void shouldCheckOutWhenWeSelectOption2() {
-        givenThereIsOneBookInTheLibraryToCheckout();
-        whenWeSelect2();
-        thenCheckOutBook();
-    }
-
-    private void thenCheckOutBook() {
-        Mockito.verify(lib, Mockito.times(1)).checkout(book);
-    }
-
-    private void givenThereIsOneBookInTheLibraryToCheckout() {
-        lib = Mockito.mock(Library.class);
+    public void shouldCallCheckOutWhenInputIs2() {
+        lib =  Mockito.mock(Library.class);
+        libraryItem = Mockito.mock(LibraryItem.class);
         book = Mockito.mock(Book.class);
-        inputParser = Mockito.mock(InputParser.class);
-//        ArrayList<Book> books = new ArrayList(Arrays.asList(Mockito.mock(Book.class)));
-//        Mockito.when(lib.getBooks()).thenReturn(books);
         nav = new Navigator(lib);
-        Mockito.when(nav.selectABookToCheckOutOrReturn()).thenReturn(book);
-        Mockito.when(inputParser.askForForTitle()).thenReturn(null);
+//        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+
+//        nav.menu(5);
+        Mockito.verify(lib, Mockito.atLeastOnce()).checkout(libraryItem);
     }
 
-    private void whenWeSelect2() {
-        nav.menu(2);
-    }
 
     private void givenThereIsOneBookInTheLibrary() {
         lib = Mockito.mock(Library.class);

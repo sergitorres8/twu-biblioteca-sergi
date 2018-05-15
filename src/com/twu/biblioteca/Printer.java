@@ -37,7 +37,7 @@ public class Printer {
     }
 
     public void whatActionWouldYouLikeToDo() {
-        out.println("\nWhat option would you like to choose(1, 2, 3 or 0): ");
+        out.println("\nWhat option would you like to choose [0-7]: ");
         out.println(CYAN + "\n[1]     List All Books Available\n" +
                 "[2]     Check out book\n" +
                 "[3]     Return book\n" +

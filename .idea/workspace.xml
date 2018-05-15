@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1924b3df-71de-4afc-b4bd-684b4bf8e8e7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_mockito_mockito_all_1_10_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BookTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioteca.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioteca.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Navigator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="Printer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="159">
+              <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Navigator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Navigator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+            <state relative-caret-position="325">
+              <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,17 +64,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavigatorTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NavigatorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="44" column="66" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="66" />
+            <state relative-caret-position="315">
+              <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-                <element signature="e#602#603#0" expanded="true" />
-                <element signature="e#628#629#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,8 +79,8 @@
       <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -179,12 +171,12 @@
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/User.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryTest.java" />
-        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java" />
         <option value="$PROJECT_DIR$/test/BookTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/Library.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BookTest.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/Navigator.java" />
+        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java" />
       </list>
     </option>
   </component>
@@ -278,7 +270,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BibliotecaApp">
+  <component name="RunManager" selected="JUnit.NavigatorTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -459,8 +451,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="JUnit.NavigatorTest" />
+        <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="JUnit.BookTest" />
         <item itemvalue="JUnit.BookTest.bookExtendsLibraryItem" />
         <item itemvalue="JUnit.LibraryTest" />
@@ -484,7 +476,7 @@
       <workItem from="1525793308073" duration="2848000" />
       <workItem from="1525819451589" duration="967000" />
       <workItem from="1525963814389" duration="40333000" />
-      <workItem from="1526282334274" duration="37631000" />
+      <workItem from="1526282334274" duration="45895000" />
     </task>
     <task id="LOCAL-00001" summary="Welcome message and List of books">
       <created>1525288668136</created>
@@ -591,43 +583,50 @@
       <option name="project" value="LOCAL" />
       <updated>1526378902818</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Refactoring duplicate and testing navigator">
+      <created>1526408206423</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1526408206423</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BookTest_bookExtendsLibraryItem - 2018.05.15 at 16h 33m 58s.xml">
-      <configuration name="BookTest.bookExtendsLibraryItem" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 16h 48m 50s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 39m 38s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookTest - 2018.05.15 at 16h 51m 12s.xml">
-      <configuration name="BookTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 17h 26m 47s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 40m 05s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 17h 49m 23s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 40m 36s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 17h 50m 25s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 44m 55s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 17h 51m 37s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 46m 06s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 18h 02m 42s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 46m 34s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 18h 10m 40s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 47m 45s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="NavigatorTest - 2018.05.15 at 18h 12m 43s.xml">
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 48m 10s.xml">
+      <configuration name="NavigatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 48m 36s.xml">
+      <configuration name="NavigatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="NavigatorTest - 2018.05.15 at 23h 53m 01s.xml">
       <configuration name="NavigatorTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101891000" />
+    <option name="totallyTimeSpent" value="110155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="43" width="1680" height="1007" extended-state="0" />
@@ -643,7 +642,7 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.44410318" visible="true" weight="0.32747254" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.44410318" visible="true" weight="0.32747254" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.33736265" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
@@ -659,7 +658,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" x="0" y="0" width="367" height="807" id="Documentation" side_tool="true" weight="0.32985258" />
+      <window_info anchor="right" x="0" y="0" width="370" height="807" id="Documentation" side_tool="true" weight="0.32967034" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -684,7 +683,8 @@
     <MESSAGE value="add tracking of pending items to return" />
     <MESSAGE value="testing" />
     <MESSAGE value="Testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing" />
+    <MESSAGE value="Refactoring duplicate and testing navigator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring duplicate and testing navigator" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
@@ -939,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -968,16 +961,6 @@
             <element signature="e#2880#2881#0" expanded="true" />
             <element signature="e#2600#2601#0" expanded="true" />
             <element signature="e#2629#2630#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1009,24 +992,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Printer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="44" column="66" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="66" />
+        <state relative-caret-position="159">
+          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#602#603#0" expanded="true" />
-            <element signature="e#628#629#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="77" selection-end-column="4" />
+        <state relative-caret-position="325">
+          <caret line="25" column="62" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/NavigatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
