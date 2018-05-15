@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class User {
     private String userName;
     private String email;
     private String phoneNumber;
+    private List checkedOutItemsToReturn;
 
     public User(String loginNumber, String password, String userName, String email, String phoneNumber) {
         this.loginNumber = loginNumber;
@@ -16,6 +18,7 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.checkedOutItemsToReturn = new ArrayList();
     }
     public List getUserInformation(){
         return Arrays.asList(userName,email,phoneNumber);
@@ -38,6 +41,14 @@ public class User {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public List getCheckedOutItemsToReturn() {
+        return checkedOutItemsToReturn;
+    }
+
+    public void setCheckedOutItemsToReturn(LibraryItem item) {
+        this.checkedOutItemsToReturn.add(item);
     }
 
     public boolean login(String loginNumber, String password){

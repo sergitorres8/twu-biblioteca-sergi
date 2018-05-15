@@ -28,6 +28,7 @@ public class Navigator {
                 Book bookToCheckOut = selectABookToCheckOut();
                 if (bookToCheckOut != null) {
                     library.checkout(bookToCheckOut);
+                    user.setCheckedOutItemsToReturn(bookToCheckOut);
                     printer.bookCheckedOut();
                 }
                 break;
@@ -48,6 +49,7 @@ public class Navigator {
                 Movie movieToCheckOut = selectAMovieToCheckOut();
                 if (movieToCheckOut != null) {
                     library.checkout(movieToCheckOut);
+                    user.setCheckedOutItemsToReturn(movieToCheckOut);
                     printer.MovieCheckedOut();
                 }
                 break;
@@ -59,7 +61,7 @@ public class Navigator {
                 }
                 break;
             case 7:
-                printer.displayUserInformation(user.getUserName(), user.getEmail(), user.getPhoneNumber());
+                printer.displayUserInformation(user.getUserName(), user.getEmail(), user.getPhoneNumber(), user.getCheckedOutItemsToReturn());
                 break;
         }
     }

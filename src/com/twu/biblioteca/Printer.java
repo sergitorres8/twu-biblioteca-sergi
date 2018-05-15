@@ -58,7 +58,7 @@ public class Printer {
     }
 
     public void bookCheckedOut() {
-        out.printf("\nThank you! Enjoy the book!\n");
+        out.printf(YELLOW + "\nThank you! Enjoy the book!\n" + RESET);
     }
 
     public void thereArentAvailableBooks() {
@@ -89,7 +89,7 @@ public class Printer {
     }
 
     public void MovieCheckedOut()  {
-        out.printf("\nThank you! Enjoy the movie!\n");
+        out.printf(YELLOW + "\nThank you! Enjoy the movie!\n" + RESET);
     }
 
     public void typetitleOfMovie() {
@@ -97,7 +97,7 @@ public class Printer {
     }
 
     public void movieReturned() {
-        out.printf("\nThank you for returning the movie.\n");
+        out.printf(YELLOW + "\nThank you for returning the movie.\n"+ RESET);
     }
 
     public void loginAsUser() {
@@ -107,10 +107,24 @@ public class Printer {
         out.printf("\nPlease type your password:\n");
     }
 
-    public void displayUserInformation(String userName, String email, String phoneNumber) {
+    public void displayUserInformation(String userName, String email, String phoneNumber, List<LibraryItem> checkedOutItemsToReturn) {
         out.println("\nThese are the available movies:\n");
         out.printf("%-20s %-30s %-20s\n", "User Name", "Email", "Phone Number");
         out.printf(BLUE + "%-20s %-30s %-20s\n" + RESET, userName, email, phoneNumber);
+        for (LibraryItem item: checkedOutItemsToReturn){
+            if (item instanceof Book) {
+                Book book = (Book) item;
+                out.printf("\nThis book is pending return:\n");
+                out.printf("%-20s %-20s %-20s\n", "Title", "Author", "Year");
+                out.printf(BLUE + "%-20s %-20s %-10s\n" + RESET, book.getTitle(), book.getAuthor(), book.getYear());
+            }
+            else if(item instanceof Movie){
+                Movie movie = (Movie) item;
+                out.printf("\nThis movie is pending return:\n");
+                out.printf("%-20s %-20s %-10s %-10s\n", "Title", "Director", "Year", "Rating");
+                out.printf(BLUE + "%-20s %-20s %-10s %-10s\n" + RESET, movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating());
+            }
+        }
     }
 
     public void invalidUserOrPassword() {

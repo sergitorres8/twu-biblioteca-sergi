@@ -7,8 +7,8 @@ import java.util.*;
 
 public class LibraryTest {
     private Library library;
-    private Optional<Book> checkedOutBook;
-    private Optional<Book> returnedBook;
+    private Optional<LibraryItem> checkedOutBook;
+    private Optional<LibraryItem> returnedBook;
     @Test
     public void shouldCheckoutBookFromLibrary(){
         givenThereIsOneBookInTheLibrary();
@@ -81,8 +81,8 @@ public class LibraryTest {
         Assert.assertEquals(0, library.getBooks().size());
     }
 
-    private void whenWeChechoutABook(Book book) {
-//        checkedOutBook = library.checkout(book);
+    private void whenWeChechoutABook(LibraryItem item) {
+        checkedOutBook = library.checkout(item);
     }
 
     private void givenThereIsOneBookInTheLibrary() {
