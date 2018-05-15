@@ -12,7 +12,7 @@ public class LibraryTest {
     @Test
     public void shouldCheckoutBookFromLibrary(){
         givenThereIsOneBookInTheLibrary();
-        whenWeChechoutABook(new Book("Harry Potter", "J. K. Rowling", 1997));
+        whenWeCheckOutABook(new Book("Harry Potter", "J. K. Rowling", 1997));
         thenTheLibraryIsEmpty();
         andTheBookIsReturnedFromTheCheckout();
     }
@@ -20,14 +20,14 @@ public class LibraryTest {
     @Test
     public void shouldReturnEmptyOptionalIfBookUnavailable(){
         givenThereIsOneBookInTheLibrary();
-        whenWeChechoutABook(new Book("Harry Peter", "J. K. Rowling", 1997));
+        whenWeCheckOutABook(new Book("Harry Doesn't Exist", "J. K. Rowling", 1997));
         thenNoBookIsReturned();
     }
 
     @Test
     public void shouldReturnEmptyOptionalWhenListOfBooksIsEmpty() {
         givenThereIsNoBooks();
-        whenWeChechoutABook(new Book("Harry Peter", "J. K. Rowling", 1997));
+        whenWeCheckOutABook(new Book("Harry Peter", "J. K. Rowling", 1997));
         thenNoBookIsReturned();
     }
 
@@ -52,15 +52,16 @@ public class LibraryTest {
     }
 
     private void whenWeReturnABookThatDoesntExists() {
-//        returnedBook = library.returnBook(new Book("Harry Peter", "J. K. Rowling", 1997));
+        returnedBook = library.returnBook(new Book("Harry Peter", "J. K. Rowling", 1997));
     }
 
     private void thenWeShouldHaveThatBookInTheList() {
-        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997), library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997)).get());
+        Book book = (Book) checkedOutBook.get();
+        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997), book);
     }
 
     private void whenWeReturnABook() {
-        library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997));
+        returnedBook = library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997));
     }
 
     private void givenThereIsNoBooks() {
@@ -69,7 +70,8 @@ public class LibraryTest {
     }
 
     private void andTheBookIsReturnedFromTheCheckout() {
-        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997), checkedOutBook.get());
+        Book book = (Book) checkedOutBook.get();
+        Assert.assertEquals(new Book("Harry Potter", "J. K. Rowling", 1997), book);
     }
 
 
@@ -81,7 +83,7 @@ public class LibraryTest {
         Assert.assertEquals(0, library.getBooks().size());
     }
 
-    private void whenWeChechoutABook(LibraryItem item) {
+    private void whenWeCheckOutABook(LibraryItem item) {
         checkedOutBook = library.checkout(item);
     }
 

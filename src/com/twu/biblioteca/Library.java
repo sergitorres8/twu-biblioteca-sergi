@@ -14,6 +14,8 @@ public class Library {
 
     public Library(List<Book> books) {
         this.books = books;
+        this.catalogOfBooks = new ArrayList<>();
+        this.catalogOfBooks = copyList(books, catalogOfBooks);
     }
 
     public Library() {
@@ -35,12 +37,12 @@ public class Library {
     }
 
     public Optional<LibraryItem> checkout(LibraryItem libraryItem) {
-        if (libraryItem instanceof Book) {
+        if (libraryItem instanceof Book && books.contains(libraryItem)) {
             Book book = (Book) libraryItem;
             books.remove(book);
             return Optional.of(book);
         }
-        else if(libraryItem instanceof Movie){
+        else if(libraryItem instanceof Movie && movies.contains(libraryItem)){
             Movie movie = (Movie) libraryItem;
             movies.remove(movie);
             return Optional.of(movie);
@@ -52,14 +54,14 @@ public class Library {
 
         if (libraryItem instanceof Book) {
             Book book = (Book) libraryItem;
-            if(catalogOfBooks.contains(book) || books.size() == 0){
+            if(catalogOfBooks.contains(book) && !books.contains(book)){
                 books.add(book);
                 return Optional.of(book);
             }
         }
         else if(libraryItem instanceof Movie){
             Movie movie = (Movie) libraryItem;
-            if(catalogOfMovies.contains(movie) || movies.size() == 0){
+            if(catalogOfMovies.contains(movie) && !movies.contains(movie)){
                 movies.add(movie);
                 return Optional.of(movie);
             }
