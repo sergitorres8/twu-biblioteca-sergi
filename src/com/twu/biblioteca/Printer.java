@@ -114,13 +114,13 @@ public class Printer {
         for (LibraryItem item: checkedOutItemsToReturn){
             if (item instanceof Book) {
                 Book book = (Book) item;
-                out.printf("\nThis book is pending return:\n");
+                out.printf("\nYou have this book pending return:\n");
                 out.printf("%-20s %-20s %-20s\n", "Title", "Author", "Year");
                 out.printf(BLUE + "%-20s %-20s %-10s\n" + RESET, book.getTitle(), book.getAuthor(), book.getYear());
             }
             else if(item instanceof Movie){
                 Movie movie = (Movie) item;
-                out.printf("\nThis movie is pending return:\n");
+                out.printf("\nYou have this movie pending return:\n");
                 out.printf("%-20s %-20s %-10s %-10s\n", "Title", "Director", "Year", "Rating");
                 out.printf(BLUE + "%-20s %-20s %-10s %-10s\n" + RESET, movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating());
             }

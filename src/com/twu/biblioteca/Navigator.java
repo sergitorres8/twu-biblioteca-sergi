@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class Navigator {
                     printer.listAvailableBooks(library.getBooks());
                 break;
             case 2:
-                Book bookToCheckOut = selectABookToCheckOut();
+                Book bookToCheckOut = selectABookToCheckOutOrReturn();
                 if (bookToCheckOut != null && library.getBooks().contains(bookToCheckOut)) {
                     library.checkout(bookToCheckOut);
                     user.setCheckedOutItemsToReturn(bookToCheckOut);
@@ -35,7 +36,7 @@ public class Navigator {
                     printer.bookUnavailable();
                 break;
             case 3:
-                Book bookToReturn = selectABookToReturn();
+                Book bookToReturn = selectABookToCheckOutOrReturn();
                 if (bookToReturn != null && !library.getBooks().contains(bookToReturn)) {
                     library.returnBook(bookToReturn);
                     printer.bookReturned();
@@ -50,7 +51,7 @@ public class Navigator {
                     printer.listAvailableMovies(library.getMovies());
                 break;
             case 5:
-                Movie movieToCheckOut = selectAMovieToCheckOut();
+                Movie movieToCheckOut = selectAMovieToCheckOutOrReturn();
                 if (movieToCheckOut != null && library.getMovies().contains(movieToCheckOut)) {
                     library.checkout(movieToCheckOut);
                     user.setCheckedOutItemsToReturn(movieToCheckOut);
@@ -60,7 +61,7 @@ public class Navigator {
                     printer.movieUnavailable();
                 break;
             case 6:
-                Movie movieToReturn = selectAMovieToReturn();
+                Movie movieToReturn = selectAMovieToCheckOutOrReturn();
                 if (movieToReturn != null && !library.getMovies().contains(movieToReturn)) {
                     library.returnBook(movieToReturn);
                     printer.movieReturned();
@@ -75,52 +76,23 @@ public class Navigator {
         }
     }
 
-    private Movie selectAMovieToReturn() {
-        printer.typetitleOfMovie();
-        String inputTitle = inputParser.askForForTitle();
-        Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
-        if (optionalMovie.isPresent())
-            return optionalMovie.get();
-        else {
-            printer.movieUnavailable();
-            return null;
-        }
-    }
 
-    private Book selectABookToReturn() {
+    public Book selectABookToCheckOutOrReturn() {
         printer.typetitleOfBook();
         String inputTitle = inputParser.askForForTitle();
         Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
         if (optionalBook.isPresent())
             return optionalBook.get();
-        else {
-            printer.bookUnavailable();
-            return null;
-        }
+        return null;
     }
 
-    private Book selectABookToCheckOut() {
-        printer.typetitleOfBook();
-        String inputTitle = inputParser.askForForTitle();
-        Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
-        if (optionalBook.isPresent())
-            return optionalBook.get();
-        else {
-            printer.bookUnavailable();
-            return null;
-        }
-    }
-
-    private Movie selectAMovieToCheckOut() {
+    public Movie selectAMovieToCheckOutOrReturn() {
         printer.typetitleOfMovie();
         String inputTitle = inputParser.askForForTitle();
         Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
         if (optionalMovie.isPresent())
             return optionalMovie.get();
-        else {
-            printer.movieUnavailable();
-            return null;
-        }
+        return null;
     }
 
     public int selectAnActionFromMenu() {
