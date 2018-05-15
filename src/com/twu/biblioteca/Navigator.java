@@ -26,18 +26,22 @@ public class Navigator {
                 break;
             case 2:
                 Book bookToCheckOut = selectABookToCheckOut();
-                if (bookToCheckOut != null) {
+                if (bookToCheckOut != null && library.getBooks().contains(bookToCheckOut)) {
                     library.checkout(bookToCheckOut);
                     user.setCheckedOutItemsToReturn(bookToCheckOut);
                     printer.bookCheckedOut();
                 }
+                else
+                    printer.bookUnavailable();
                 break;
             case 3:
                 Book bookToReturn = selectABookToReturn();
-                if (bookToReturn != null) {
+                if (bookToReturn != null && !library.getBooks().contains(bookToReturn)) {
                     library.returnBook(bookToReturn);
                     printer.bookReturned();
                 }
+                else
+                    printer.bookUnavailable();
                 break;
             case 4:
                 if (library.getMovies().size() == 0)
@@ -47,17 +51,22 @@ public class Navigator {
                 break;
             case 5:
                 Movie movieToCheckOut = selectAMovieToCheckOut();
-                if (movieToCheckOut != null) {
+                if (movieToCheckOut != null && library.getMovies().contains(movieToCheckOut)) {
                     library.checkout(movieToCheckOut);
                     user.setCheckedOutItemsToReturn(movieToCheckOut);
                     printer.MovieCheckedOut();
                 }
+                else
+                    printer.movieUnavailable();
                 break;
             case 6:
                 Movie movieToReturn = selectAMovieToReturn();
-                if (movieToReturn != null) {
+                if (movieToReturn != null && !library.getMovies().contains(movieToReturn)) {
                     library.returnBook(movieToReturn);
                     printer.movieReturned();
+                }
+                else{
+                    printer.movieUnavailable();
                 }
                 break;
             case 7:
@@ -94,7 +103,7 @@ public class Navigator {
         printer.typetitleOfBook();
         String inputTitle = inputParser.askForForTitle();
         Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
-        if (optionalBook.isPresent() && library.getBooks().contains(optionalBook.get()))
+        if (optionalBook.isPresent())
             return optionalBook.get();
         else {
             printer.bookUnavailable();
@@ -106,7 +115,7 @@ public class Navigator {
         printer.typetitleOfMovie();
         String inputTitle = inputParser.askForForTitle();
         Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
-        if (optionalMovie.isPresent() && library.getMovies().contains(optionalMovie.get()))
+        if (optionalMovie.isPresent())
             return optionalMovie.get();
         else {
             printer.movieUnavailable();
