@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Optional;
 
@@ -38,7 +37,7 @@ public class Navigator {
             case 3:
                 Book bookToReturn = selectABookToCheckOutOrReturn();
                 if (bookToReturn != null && !library.getBooks().contains(bookToReturn)) {
-                    library.returnBook(bookToReturn);
+                    library.returnItem(bookToReturn);
                     user.removeBookAfterReturn(bookToReturn);
                     printer.bookReturned();
                 }
@@ -64,7 +63,7 @@ public class Navigator {
             case 6:
                 Movie movieToReturn = selectAMovieToCheckOutOrReturn();
                 if (movieToReturn != null && !library.getMovies().contains(movieToReturn)) {
-                    library.returnBook(movieToReturn);
+                    library.returnItem(movieToReturn);
                     user.removeBookAfterReturn(movieToReturn);
                     printer.movieReturned();
                 }

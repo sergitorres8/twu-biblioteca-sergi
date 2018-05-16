@@ -50,7 +50,7 @@ public class Library {
         return Optional.empty();
     }
 
-    public Optional<LibraryItem> returnBook(LibraryItem libraryItem) {
+    public Optional<LibraryItem> returnItem(LibraryItem libraryItem) {
 
         if (libraryItem instanceof Book) {
             Book book = (Book) libraryItem;

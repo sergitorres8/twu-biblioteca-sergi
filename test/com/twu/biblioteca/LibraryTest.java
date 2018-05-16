@@ -57,7 +57,7 @@ public class LibraryTest {
     }
 
     private void whenWeReturnABookThatDoesntExists() {
-        returnedBook = library.returnBook(new Book("Harry Peter", "J. K. Rowling", 1997));
+        returnedBook = library.returnItem(new Book("Harry Peter", "J. K. Rowling", 1997));
     }
 
     private void thenWeShouldHaveThatBookInTheList() {
@@ -65,7 +65,7 @@ public class LibraryTest {
     }
 
     private void whenWeReturnABook() {
-        returnedBook = library.returnBook(new Book("Harry Potter", "J. K. Rowling", 1997));
+        returnedBook = library.returnItem(new Book("Harry Potter", "J. K. Rowling", 1997));
     }
 
     private void givenThereIsNoBooks() {

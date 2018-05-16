@@ -1,10 +1,9 @@
 package com.twu.biblioteca;
 
-import com.sun.java.swing.plaf.motif.MotifCheckBoxMenuItemUI;
 import org.junit.Test;
 
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.configuration.injection.scanner.MockScanner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +39,7 @@ public class NavigatorTest {
 
         Mockito.when(inputParser.askForForTitle()).thenReturn("Potter");
         Mockito.when(lib.getBookByTitle("Potter")).thenReturn(Optional.empty());
-        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.empty());
         Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
 
         nav = new Navigator(lib, inputParser);
@@ -58,12 +57,12 @@ public class NavigatorTest {
         Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
         Mockito.when(inputParser.askForForTitle()).thenReturn("Harry Potter");
         Mockito.when(lib.getBookByTitle("Harry Potter")).thenReturn(Optional.of((Book) libraryItem));
-        Mockito.when(lib.returnBook(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.returnItem(libraryItem)).thenReturn(Optional.of(libraryItem));
 
         nav = new Navigator(lib, inputParser);
         nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
         nav.menu(3);
-        Mockito.verify(lib, Mockito.never()).returnBook(libraryItem);
+        Mockito.verify(lib, Mockito.never()).returnItem(libraryItem);
     }
 
     @Test
@@ -76,7 +75,7 @@ public class NavigatorTest {
         Mockito.when(lib.getBookByTitle("Harry Potter")).thenReturn(Optional.of((Book) libraryItem));
         Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
         Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
-        Mockito.when(lib.returnBook(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.returnItem(libraryItem)).thenReturn(Optional.of(libraryItem));
 
         nav = new Navigator(lib, inputParser);
         nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
@@ -86,7 +85,75 @@ public class NavigatorTest {
 
         Mockito.when(lib.getBooks()).thenReturn(Arrays.asList());
         nav.menu(3);
-        Mockito.verify(lib, Mockito.atLeastOnce()).returnBook(libraryItem);
+        Mockito.verify(lib, Mockito.atLeastOnce()).returnItem(libraryItem);
+    }
+
+    @Test
+    public void shouldListAllMovieWhenInputIs4() {
+        lib = Mockito.mock(Library.class);
+        inputParser = Mockito.mock(InputParser.class);
+        ArrayList<Movie> movies = new ArrayList(Arrays.asList(Mockito.mock(Movie.class)));
+        Mockito.when(lib.getMovies()).thenReturn(movies);
+        nav = new Navigator(lib, inputParser);
+        nav.menu(4);
+        Mockito.verify(lib, Mockito.times(2)).getMovies();
+    }
+
+    @Test
+    public void shouldCheckOutMoviesWhenInputIs5AndBookExists() {
+        lib =  Mockito.mock(Library.class);
+        libraryItem = new Movie("Interstellar", 2014, "Christopher Nolan", 8.9f);
+        inputParser = Mockito.mock(InputParser.class);
+
+        Mockito.when(inputParser.askForForTitle()).thenReturn("Interstellar");
+        Mockito.when(lib.getMovieByTitle("Interstellar")).thenReturn(Optional.of((Movie) libraryItem));
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.getMovies()).thenReturn(Arrays.asList((Movie) libraryItem));
+
+        nav = new Navigator(lib, inputParser);
+        nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
+        nav.menu(5);
+        Mockito.verify(lib, Mockito.atLeastOnce()).checkout(libraryItem);
+    }
+
+    @Test
+    public void shouldNotCheckOutMovieWhenInputIs5ButInputDoesNotExist() {
+        lib =  Mockito.mock(Library.class);
+        libraryItem = new Movie("Interstellar", 2014, "Christopher Nolan", 8.9f);
+        inputParser = Mockito.mock(InputParser.class);
+
+        Mockito.when(inputParser.askForForTitle()).thenReturn("Intellar");
+        Mockito.when(lib.getMovieByTitle("Intellar")).thenReturn(Optional.empty());
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.empty());
+        Mockito.when(lib.getMovies()).thenReturn(Arrays.asList((Movie) libraryItem));
+
+        nav = new Navigator(lib, inputParser);
+        nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
+        nav.menu(5);
+        Mockito.verify(lib, Mockito.never()).checkout(libraryItem);
+    }
+
+    @Test
+    public void shouldReturnMovieWhenInputIs6AndItWasCheckOutPreviously() {
+        lib =  Mockito.mock(Library.class);
+        libraryItem =  new Movie("Interstellar", 2014, "Christopher Nolan", 8.9f);
+        inputParser = Mockito.mock(InputParser.class);
+
+        Mockito.when(inputParser.askForForTitle()).thenReturn("Interstellar");
+        Mockito.when(lib.getMovieByTitle("Interstellar")).thenReturn(Optional.of((Movie) libraryItem));
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.getMovies()).thenReturn(Arrays.asList((Movie) libraryItem));
+        Mockito.when(lib.returnItem(libraryItem)).thenReturn(Optional.of(libraryItem));
+
+        nav = new Navigator(lib, inputParser);
+        nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
+
+        nav.menu(5);
+        Mockito.verify(lib, Mockito.atLeastOnce()).checkout(libraryItem);
+
+        Mockito.when(lib.getMovies()).thenReturn(Arrays.asList());
+        nav.menu(6);
+        Mockito.verify(lib, Mockito.atLeastOnce()).returnItem(libraryItem);
     }
 
     private void givenThatWeWantToCheckOutAExistingBook() {
