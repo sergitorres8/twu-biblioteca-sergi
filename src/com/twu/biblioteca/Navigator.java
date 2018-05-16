@@ -10,10 +10,10 @@ public class Navigator {
     Printer  printer;
     User user;
 
-    public Navigator(Library library, InputParser inputParser) {
+    public Navigator(Library library, InputParser inputParser, Printer printer) {
         this.inputParser = inputParser;
         this.library = library;
-        this.printer = new Printer();
+        this.printer = printer;
     }
 
     public void menu(int choice){
@@ -80,7 +80,7 @@ public class Navigator {
 
     public Book selectABookToCheckOutOrReturn() {
         printer.typetitleOfBook();
-        String inputTitle = inputParser.askForForTitle();
+        String inputTitle = inputParser.askForTitle();
         Optional<Book> optionalBook = library.getBookByTitle(inputTitle);
         if (optionalBook.isPresent())
             return optionalBook.get();
@@ -89,7 +89,7 @@ public class Navigator {
 
     public Movie selectAMovieToCheckOutOrReturn() {
         printer.typetitleOfMovie();
-        String inputTitle = inputParser.askForForTitle();
+        String inputTitle = inputParser.askForTitle();
         Optional<Movie> optionalMovie = library.getMovieByTitle(inputTitle);
         if (optionalMovie.isPresent())
             return optionalMovie.get();

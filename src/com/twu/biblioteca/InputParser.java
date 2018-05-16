@@ -16,7 +16,7 @@ public class InputParser {
         return input;
     }
 
-    public String askForForTitle() {
+    public String askForTitle() {
         scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         return input;

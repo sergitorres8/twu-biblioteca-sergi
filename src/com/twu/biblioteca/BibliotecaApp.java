@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        Printer output = new Printer();
+        Printer printer = new Printer();
         InputParser inputParser = new InputParser();
         Library library = new Library();
-        Navigator nav = new Navigator(library , inputParser);
-        output.welcomeMessage();
+        Navigator nav = new Navigator(library , inputParser, printer);
+        printer.welcomeMessage();
 
         if(nav.loginUser()) {
             int action = nav.selectAnActionFromMenu();
@@ -17,7 +17,7 @@ public class BibliotecaApp {
             }
         }
         else {
-            output.invalidUserOrPassword();
+            printer.invalidUserOrPassword();
             System.exit(0);
         }
     }
