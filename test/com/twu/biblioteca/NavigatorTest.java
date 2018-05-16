@@ -68,17 +68,25 @@ public class NavigatorTest {
 
     @Test
     public void shouldReturnBookWhenBookExistsAndWasCheckedOutPreviously(){
-        nav = givenThatWeCorrectlyCheckedOutABook();
-        Mockito.when(lib.returnBook(libraryItem)).thenReturn(Optional.of(libraryItem));
-        nav.menu(3);
-        Mockito.verify(lib, Mockito.atLeastOnce()).returnBook(libraryItem);
-    }
+        lib =  Mockito.mock(Library.class);
+        libraryItem = new Book("Harry Potter", "J. K. Rowling", 1997);
+        inputParser = Mockito.mock(InputParser.class);
 
-    private Navigator givenThatWeCorrectlyCheckedOutABook() {
-        givenThatWeWantToCheckOutAExistingBook();
+        Mockito.when(inputParser.askForForTitle()).thenReturn("Harry Potter");
+        Mockito.when(lib.getBookByTitle("Harry Potter")).thenReturn(Optional.of((Book) libraryItem));
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
+        Mockito.when(lib.returnBook(libraryItem)).thenReturn(Optional.of(libraryItem));
+
+        nav = new Navigator(lib, inputParser);
+        nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
+
         nav.menu(2);
         Mockito.verify(lib, Mockito.atLeastOnce()).checkout(libraryItem);
-        return nav;
+
+        Mockito.when(lib.getBooks()).thenReturn(Arrays.asList());
+        nav.menu(3);
+        Mockito.verify(lib, Mockito.atLeastOnce()).returnBook(libraryItem);
     }
 
     private void givenThatWeWantToCheckOutAExistingBook() {
