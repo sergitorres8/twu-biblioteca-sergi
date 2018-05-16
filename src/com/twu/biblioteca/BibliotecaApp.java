@@ -4,8 +4,9 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         Printer output = new Printer();
+        InputParser inputParser = new InputParser();
         Library library = new Library();
-        Navigator nav = new Navigator(library);
+        Navigator nav = new Navigator(library , inputParser);
         output.welcomeMessage();
 
         if(nav.loginUser()) {

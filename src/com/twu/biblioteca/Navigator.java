@@ -11,8 +11,8 @@ public class Navigator {
     Printer  printer;
     User user;
 
-    public Navigator(Library library) {
-        this.inputParser = new InputParser();
+    public Navigator(Library library, InputParser inputParser) {
+        this.inputParser = inputParser;
         this.library = library;
         this.printer = new Printer();
     }
@@ -39,6 +39,7 @@ public class Navigator {
                 Book bookToReturn = selectABookToCheckOutOrReturn();
                 if (bookToReturn != null && !library.getBooks().contains(bookToReturn)) {
                     library.returnBook(bookToReturn);
+                    user.removeBookAfterReturn(bookToReturn);
                     printer.bookReturned();
                 }
                 else
@@ -64,6 +65,7 @@ public class Navigator {
                 Movie movieToReturn = selectAMovieToCheckOutOrReturn();
                 if (movieToReturn != null && !library.getMovies().contains(movieToReturn)) {
                     library.returnBook(movieToReturn);
+                    user.removeBookAfterReturn(movieToReturn);
                     printer.movieReturned();
                 }
                 else{

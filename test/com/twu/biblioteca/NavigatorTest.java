@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.sun.java.swing.plaf.motif.MotifCheckBoxMenuItemUI;
 import org.junit.Test;
 
 import org.mockito.Mockito;
@@ -15,7 +16,7 @@ public class NavigatorTest {
     Library lib;
     LibraryItem libraryItem;
     Book book;
-
+    InputParser inputParser;
 
     @Test
     public void listBookWhenInputIs1() {
@@ -27,21 +28,39 @@ public class NavigatorTest {
     @Test
     public void shouldCallCheckOutWhenInputIs2() {
         lib =  Mockito.mock(Library.class);
-        libraryItem = Mockito.mock(LibraryItem.class);
+        libraryItem = new Book("Harry Potter", "J. K. Rowling", 1997);
         book = Mockito.mock(Book.class);
-        nav = new Navigator(lib);
-//        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        inputParser = Mockito.mock(InputParser.class);
 
-//        nav.menu(5);
+        Mockito.when(inputParser.askForForTitle()).thenReturn("Harry Potter");
+        Mockito.when(lib.getBookByTitle("Harry Potter")).thenReturn(Optional.of((Book) libraryItem));
+        Mockito.when(lib.checkout(libraryItem)).thenReturn(Optional.of(libraryItem));
+        Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
+
+        nav = new Navigator(lib, inputParser);
+        nav.user = new User("000-0001","0001","Sergi Torres", "storres@thoughtworks.com", "959503509");
+        nav.menu(2);
         Mockito.verify(lib, Mockito.atLeastOnce()).checkout(libraryItem);
     }
 
+    @Test
+    public void shouldCallReturnBookWhenInputIs2(){
+        lib =  Mockito.mock(Library.class);
+        libraryItem = new Book("Harry Potter", "J. K. Rowling", 1997);
+        book = Mockito.mock(Book.class);
+        inputParser = Mockito.mock(InputParser.class);
+
+        Mockito.when(lib.getBooks()).thenReturn(Arrays.asList((Book) libraryItem));
+
+
+    }
 
     private void givenThereIsOneBookInTheLibrary() {
         lib = Mockito.mock(Library.class);
+        inputParser = Mockito.mock(InputParser.class);
         ArrayList<Book> books = new ArrayList(Arrays.asList(Mockito.mock(Book.class)));
         Mockito.when(lib.getBooks()).thenReturn(books);
-        nav = new Navigator(lib);
+        nav = new Navigator(lib, inputParser);
     }
 
     private void thenListBooksWillBeCalled() {

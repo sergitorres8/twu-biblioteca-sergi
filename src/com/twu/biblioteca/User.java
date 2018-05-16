@@ -51,6 +51,10 @@ public class User {
         this.checkedOutItemsToReturn.add(item);
     }
 
+    public void removeBookAfterReturn(LibraryItem item){
+        this.checkedOutItemsToReturn.remove(item);
+    }
+
     public boolean login(String loginNumber, String password){
         if (this.loginNumber.equals(loginNumber) && this.password.equals(password))
             return true;
